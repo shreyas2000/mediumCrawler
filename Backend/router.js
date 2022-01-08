@@ -7,9 +7,8 @@ module.exports = async (req, res, routes) => {
 
         let parsedURL = url.parse(req.url, true);
         let path = parsedURL.pathname;
-        path = path.replace(/^\/+|\/+$/g, "");
-
-        if(path == r.path){
+        path = path.split("/");
+        if(path[1] == r.path){
             r.handler(req,res)
         }
     });
